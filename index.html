@@ -2,9 +2,74 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title></title>
   </head>
   <body>
-
+    <div>
+        <input type="number" name="mult_x_one" value="" placeholder="valor de x">
+        <select id="one" class="" name="">
+          <option value="+">+</option>
+          <option value="-">-</option>
+        </select>
+        <input type="number" name="mult_y_one" value="" placeholder="valor de y">
+        <span>=</span>
+        <input type="number" name="result_one" value="">
+        <br>
+        <br>
+        <input type="number" name="mult_x_two" value="" placeholder="valor de x">
+        <select id="two" class="" name="">
+          <option value="+">+</option>
+          <option value="-">-</option>
+        </select>
+        <input type="number" name="mult_y_two" value="" placeholder="valor de y">
+        <span>=</span>
+        <input type="number" name="result_two" value="">
+        <br>
+        <button id="submit" type="button" name="button">Enviar</button>
+    </div>
   </body>
+  <script type="text/javascript">
+
+  $( "#submit" ).click(function() {
+    main();
+  });
+
+  function main() {
+    //set variables
+    var x1 = $("input[type=number][name=mult_x_one]").val();
+    var x2 = $("input[type=number][name=mult_x_two]").val();
+    var y1 = $("input[type=number][name=mult_y_one]").val();
+    var y2 = $("input[type=number][name=mult_y_two]").val();
+    var r1 = $("input[type=number][name=result_one]").val();
+    var r2 = $("input[type=number][name=result_two]").val();;
+    var operator_one = $( "select#one").val();
+    var operator_two = $( "select#two").val();
+
+    //new values equation_one
+    negative_x2 = -x2;
+    var new_x1 = x1*negative_x2;
+    var new_y1 = y1*negative_x2;
+    var new_r1 = r1*negative_x2;
+
+    //new values equation_two
+    var new_x2 = x2*x1;
+    var new_y2 = y2*x1;
+    var new_r2 = r2*x1;
+
+  };
+
+  //REVISAR ESTA FUNCION
+  function value_y(new_y1, new_y2, new_r1, new_r2, operator_one, operator_two) {
+    var result_y, r_total;
+    if (operator_one='+') {
+      result_y = new_y1 + new_y2;
+    }else {
+      result_y = new_y1 - new_y2;
+    }
+    r_total = r1 + r2;
+
+  }
+
+  </script>
 </html>
