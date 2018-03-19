@@ -3,30 +3,43 @@
   <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Ecuacion</title>
   </head>
   <body>
-    <div>
-        <input type="number" name="mult_x_one" value="" placeholder="valor de x">
-        <select id="one" class="" name="">
-          <option value="+">+</option>
-          <option value="-">-</option>
-        </select>
-        <input type="number" name="mult_y_one" value="" placeholder="valor de y">
-        <span>=</span>
-        <input type="number" name="result_one" value="">
-        <br>
-        <br>
-        <input type="number" name="mult_x_two" value="" placeholder="valor de x">
-        <select id="two" class="" name="">
-          <option value="+">+</option>
-          <option value="-">-</option>
-        </select>
-        <input type="number" name="mult_y_two" value="" placeholder="valor de y">
-        <span>=</span>
-        <input type="number" name="result_two" value="">
-        <br>
+    <div class="container">
+      <h1>Sistemas Lineales</h1>
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <input class="form-control" type="number" name="mult_x_one" value="" placeholder="valor de x">
+          <h4 class="mr-3"> x </h4>
+          <select id="one" class="form-control" name="">
+            <option value="+">+</option>
+            <option value="-">-</option>
+          </select>
+          <input class="form-control" type="number" name="mult_y_one" value="" placeholder="valor de y">
+          <span> y </span>
+          <span>=</span>
+          <input class="form-control" type="number" name="result_one" value="">
+        </div>
+        <div class="form-group">
+          <input type="number" name="mult_x_two" value="" placeholder="valor de x">
+          <span>x</span>
+          <select id="two" class="" name="">
+            <option value="+">+</option>
+            <option value="-">-</option>
+          </select>
+          <input type="number" name="mult_y_two" value="" placeholder="valor de y">
+          <span>y</span>
+          <span>=</span>
+          <input type="number" name="result_two" value="">
+          <br>
+        </div>
         <button id="submit" type="button" name="button">Enviar</button>
+      </form>
+    </div>
+    <div id="result">
+
     </div>
   </body>
   <script type="text/javascript">
@@ -37,14 +50,21 @@
 
   function main() {
     //set variables
+    var operator_one = $( "select#one").val();
+    var operator_two = $( "select#two").val();
     var x1 = $("input[type=number][name=mult_x_one]").val();
     var x2 = $("input[type=number][name=mult_x_two]").val();
     var y1 = $("input[type=number][name=mult_y_one]").val();
+    if (operator_one == '-') {
+      y1 = -y1;
+    }
     var y2 = $("input[type=number][name=mult_y_two]").val();
+    if (operator_two == '-') {
+      y2 = -y2;
+    }
     var r1 = $("input[type=number][name=result_one]").val();
     var r2 = $("input[type=number][name=result_two]").val();;
-    var operator_one = $( "select#one").val();
-    var operator_two = $( "select#two").val();
+    var x, y;
 
     //new values equation_one
     negative_x2 = -x2;
@@ -57,18 +77,44 @@
     var new_y2 = y2*x1;
     var new_r2 = r2*x1;
 
+    y = value_y(new_y1, new_y2, new_r1, new_r2, operator_one);
+    x = value_x(new_x1, new_y1, new_r1, operator_one, y);
+
+    //show result
+    $( "div#result" ).html(x + " " +y);
+    console.log(x, y);
+    // value_x(new_x1, new_y1, new_r1, operator_one, y)
   };
 
-  //REVISAR ESTA FUNCION
-  function value_y(new_y1, new_y2, new_r1, new_r2, operator_one, operator_two) {
+  //Result value of y
+  function value_y(new_y1, new_y2, new_r1, new_r2, operator_one) {
     var result_y, r_total;
-    if (operator_one='+') {
+    if (operator_one = '+') {
       result_y = new_y1 + new_y2;
-    }else {
+    } else {
       result_y = new_y1 - new_y2;
     }
-    r_total = r1 + r2;
+    r_total = (new_r1) + (new_r2);
+    if (r_total == 0 && result_y == 0) {
+      alert('son iguales');
+      y=0
+    } else if (r_total == 0) {
+      y = 0 ;
+    } else {
+      y = r_total / result_y;
+    }
+    return y;
+  }
 
+  //Result value of x
+  function value_x(new_x1, new_y1, new_r1, operator_one, y) {
+    var result_y = new_y1 * y;
+    if (result_y == -0) {
+      result_y = 0;
+    }
+    var r_total = (new_r1) - (result_y);
+    x = r_total / new_x1;
+    return x;
   }
 
   </script>
