@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/master.css">
+    <title>Sistemas Lineales</title>
+  </head>
+  <body>
+    <div class="container">
+      <form class="form-inline">
+        <div class="col-sm-12 col-md-8 col-lg-6 offset-lg-3 offset-md-2 card mt-4">
+          <div class="card-header bg-transparent">
+            <h1>Sistemas Lineales</h1>
+          </div>
+          <div class="card-body">
+            <div class="form-group mb-2">
+              <input class="form-control" type="number" name="mult_x_one">
+              <h4 class="mr-3 mb-0"> X </h4>
+              <select id="one" class="form-control mr-3" name="">
+                <option value="+">+</option>
+                <option value="-">-</option>
+              </select>
+              <input class="form-control" type="number" name="mult_y_one">
+              <h4 class="mr-3 mb-0"> Y </h4>
+              <h4 class="mr-3 mb-0"> = </h4>
+              <input class="form-control" type="number" name="result_one">
+            </div>
+            <div class="form-group mb-2">
+              <input class="form-control" type="number" name="mult_x_two">
+              <h4 class="mr-3 mb-0"> X </h4>
+              <select id="two" class="form-control mr-3" name="">
+                <option value="+">+</option>
+                <option value="-">-</option>
+              </select>
+              <input class="form-control" type="number" name="mult_y_two">
+              <h4 class="mr-3 mb-0"> Y </h4>
+              <h4 class="mr-3 mb-0"> = </h4>
+              <input class="form-control" type="number" name="result_two">
+              <br>
+            </div>
+          </div>
+          <div class="row card-footer bg-transparent">
+            <div class="col-12 float-right">
+              <button class="btn btn-info" id="submit" type="button" name="button">Calcular</button>
+            </div>
+          </div>
+      </form>
+    </div>
+    <div class="result col-sm-12 col-md-8 col-lg-6 offset-lg-3 offset-md-2 card mt-4">
+      <div class="card-header bg-transparent">
+        <h4>Resultado</h4>
+      </div>
+      <div class="card-body">
+        <h5 id="result"></h5>
+      </div>
+      <div class="card-footer bg-transparent">
+
+      </div>
+    </div>
+  </body>
+  <script src="script/script.js"></script>
+</html>
