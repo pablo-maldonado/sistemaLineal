@@ -10,7 +10,7 @@ $( "#submit_two" ).click(function() {
 function main_limit_one() {
     var a = parseInt($("input[type=number][name=value_a]").val());
     var b = parseInt($("input[type=number][name=value_b]").val());
-    var x = parseInt($("input[type=number][name=value_x]").val());
+    var x = parseInt($("input[type=number][name=value_x_one]").val());
 
     //verificar que los input no esten vacios
     if (not_empty('limit-one')) {
@@ -27,14 +27,13 @@ function main_limit_one() {
 function main_limit_two(){
     var a_one = parseInt($("input[type=number][name=value_a_one]").val());
     var b_one = parseInt($("input[type=number][name=value_b_one]").val());
-    var x_one = parseInt($("input[type=number][name=value_x_one]").val());
     var a_two = parseInt($("input[type=number][name=value_a_two]").val());
     var b_two = parseInt($("input[type=number][name=value_b_two]").val());
-    var x_two = parseInt($("input[type=number][name=value_x_two]").val());
+    var x = parseInt($("input[type=number][name=value_x_two]").val());
 
     //verifica que los input no esten vacios
     if (not_empty('limit-two')) {
-        var limit = calculate_limit_two(a_one, b_one, x_one, a_two, b_two, x_two);
+        var limit = calculate_limit_two(a_one, b_one, a_two, b_two, x);
         if (limit == 0) {
             $( "#result" ).html("El límite no existe");
         } else {
@@ -49,13 +48,13 @@ function calculate_limit_one(a, b, x) {
     return parseInt(a * x + b);
 };
 
-function calculate_limit_two(a_one, b_one, x_one, a_two, b_two, x_two) {
-    var denominador = a_two * (x_two * x_two) - b_two;
+function calculate_limit_two(a_one, b_one, a_two, b_two, x) {
+    var denominador = a_two * (x * x) - b_two;
     var limit = 0;
     if (denominador == 0) {
         $( "#result" ).html("El límite no existe");
     } else {
-       var nominador = a_one * x_one + b_two;
+       var nominador = a_one * x + b_one;
        limit = nominador / denominador;
     }
     return limit;

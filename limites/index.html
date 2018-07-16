@@ -3,10 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="css/master.css">
     <title>Límites</title>
 </head>
 
@@ -26,7 +22,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <h4 class="mr-3 mb-0"> X ------></h4>
-                        <input class="form-control limit-one" type="number" name="value_x">
+                        <input class="form-control limit-one" type="number" name="value_x_one">
                     </div>
                 </div>
                 <div class="row card-footer bg-transparent">
@@ -35,9 +31,9 @@
                     </div>
                 </div>
         </form>
-        </div>
+    </div>
 
-        <div class="container">
+    <div class="container">
             <form class="form-inline">
                 <div class="col-sm-12 col-md-8 col-lg-6 offset-lg-3 offset-md-2 card mt-4">
                     <div class="card-header bg-transparent">
@@ -54,8 +50,12 @@
                         </div>
                         <div class="form-group mb-2 col-9 offset-3">
                             <input class="form-control limit-two" type="number" name="value_a_two">
-                            <h4 class="mr-3 mb-0"> X +</h4>
+                            <h4 class="mr-3 mb-0"> X² -</h4>
                             <input class="form-control limit-two" type="number" name="value_b_two">
+                        </div>
+                        <div class="form-group mb-2">
+                            <h4 class="mr-3 mb-0"> X ------></h4>
+                            <input class="form-control limit-two" type="number" name="value_x_two">
                         </div>
                     </div>
                     <div class="row card-footer bg-transparent">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
             </form>
-            </div>
+        </div>
 
             <div class="result col-sm-12 col-md-8 col-lg-6 offset-lg-3 offset-md-2 card mt-4">
                 <div class="card-header bg-transparent">
@@ -78,6 +78,11 @@
                 </div>
             </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="css/master.css">
+
 <script src="script/script.js"></script>
 
 </html>
