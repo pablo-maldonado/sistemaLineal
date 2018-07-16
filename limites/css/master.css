@@ -11,3 +11,8 @@ input {
   input.has-error {
     border: 1px solid red;
   }
+
+.divider{
+  border-bottom: 1px solid #00000080;
+  padding-bottom: 0.5rem;
+  }

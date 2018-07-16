@@ -7,6 +7,10 @@ $( "#submit_two" ).click(function() {
     main_limit_two();
   });
 
+$( "#submit_three" ).click(function() {
+   main_limit_three();
+});
+
 function main_limit_one() {
     var a = parseInt($("input[type=number][name=value_a]").val());
     var b = parseInt($("input[type=number][name=value_b]").val());
@@ -44,6 +48,25 @@ function main_limit_two(){
     $( ".result" ).show();
 };
 
+function main_limit_three() {
+    var a = parseInt($("input[type=number][name=value_a_three]").val());
+    var b = parseInt($("input[type=number][name=value_b_three]").val());
+    var x = parseInt($("input[type=number][name=value_x_three]").val());
+
+    //verificar que los input no esten vacios
+    if (not_empty('limit-three')) {
+        var limit = calculate_limit_three(a, b, x);
+        if(limit >= 0){
+            $( "#result" ).html("El límite de la función es " + limit);
+        }
+    }; 
+    //sustituir X por el valor de la variable x
+
+    //mostrar el resultado
+    $( ".result" ).show();
+    
+};
+
 function calculate_limit_one(a, b, x) {
     return parseInt(a * x + b);
 };
@@ -56,6 +79,16 @@ function calculate_limit_two(a_one, b_one, a_two, b_two, x) {
     } else {
        var nominador = a_one * x + b_one;
        limit = nominador / denominador;
+    }
+    return limit;
+};
+
+function calculate_limit_three(a_three, b_three, x) {
+    var limit = (a_three * x) - b_three;
+    if (limit < 0) {
+        $( "#result" ).html("El límite no existe");
+    } else {
+        limit = Math.sqrt(limit);
     }
     return limit;
 };
