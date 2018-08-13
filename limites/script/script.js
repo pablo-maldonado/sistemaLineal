@@ -11,6 +11,10 @@ $( "#submit_three" ).click(function() {
    main_limit_three();
 });
 
+$( "#submit_four" ).click(function() {
+    main_limit_four();
+ });
+
 function main_limit_one() {
     var a = parseInt($("input[type=number][name=value_a]").val());
     var b = parseInt($("input[type=number][name=value_b]").val());
@@ -67,6 +71,28 @@ function main_limit_three() {
     
 };
 
+function main_limit_four() {
+    var a_up = parseInt($("input[type=number][name=value_a_four_up]").val());
+    var b_up = parseInt($("input[type=number][name=value_b_four_up]").val());
+    var c_up = parseInt($("input[type=number][name=value_c_four_up]").val());
+    var b_down = parseInt($("input[type=number][name=value_b_four_down]").val());
+    var x = parseInt($("input[type=number][name=value_x_four]").val());
+
+    if (not_empty('limit-four')) {
+        var limit = calculate_limit_four(a_up, b_up, c_up, b_down, x);
+        if(limit != false){
+            $( "#result" ).html("El límite de la función es " + limit);
+        } else {
+            $( "#result" ).html("No bro, u cant do that");
+        }
+    }; 
+    //sustituir X por el valor de la variable x
+
+    //mostrar el resultado
+    $( ".result" ).show();
+
+};
+
 function calculate_limit_one(a, b, x) {
     return parseInt(a * x + b);
 };
@@ -92,6 +118,17 @@ function calculate_limit_three(a_three, b_three, x) {
     }
     return limit;
 };
+
+function calculate_limit_four(a_up, b_up, c_up, b_down, x) {
+    var ab = c_up / b_down;
+    var a_b = b_up - b_down;
+
+    if (ab == a_b) {
+     return x + ab; 
+    } else {
+        return false;
+    }
+}
 
 function not_empty(_class){
     var matches = 0;
